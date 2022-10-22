@@ -39,10 +39,15 @@
 
 .p1 a {
   width: 30px;
-  height: 3px;
+  height: 6px;
   padding: 0;
   margin: auto 2px;
   background-color: #adb5bd;
+}
+.p1 a:hover,
+a:active {
+  transform: translateY(-5px);
+  transition: all 0.5s ease;
 }
 
 .p1 .is-active {
@@ -57,4 +62,28 @@
 .img-popular-film {
   width: 100%;
   height: 300px;
+}
+
+.dark-mode {
+  background-color: #343a40 !important;
+  color: #f1f3f5 !important;
+}
+
+.dark-mode-container {
+  background-color: #212529 !important;
+  color: #f1f3f5 !important;
+}
+
+svg.chevronR:hover,
+svg.chevronR:active {
+  color: white !important;
+  transform: translateX(4px);
+  transition: all 0.3s ease;
+}
+
+svg.chevronL:hover,
+svg.chevronL:active {
+  color: white !important;
+  transform: translateX(-4px);
+  transition: all 0.3s ease;
 }
