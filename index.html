@@ -10,8 +10,297 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./style.css" />
     <title>BTCN_VueJS</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container my-3 py-2 bg" id="app" style="max-width: 1200px">
+      <!----------- Header ------------>
+      <div class="alert bg-light text-dark fw-bold grid-header">
+        <div style="align-self: center"><h4>&lt; 1712522 &gt;</h4></div>
+        <div style="align-self: center; justify-self: center">
+          <h1>Movies info</h1>
+        </div>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            align-items: flex-end;
+          "
+        >
+          <h4>&lt; key API &gt;</h4>
+          <h4 class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="flexSwitchCheckDefault"
+            />
+            <label class="form-check-label" for="flexSwitchCheckDefault"
+              >Dark mode</label
+            >
+          </h4>
+        </div>
+      </div>
+      <!---------- Navbar ------------->
+      <nav class="navbar bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand text-dark" @click="homeHandle">Home</a>
+          <form class="d-flex" role="search">
+            <input
+              v-model="str"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-outline-success"
+              type="button"
+              @click="searchHandle"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
+      <!----------- Main ------------------>
+      <!-- New-film -->
+      <div class="grid-new-film my-3">
+        <div style="align-self: center; justify-self: center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="currentColor"
+            class="bi bi-chevron-left"
+            viewBox="0 0 16 16"
+            style="color: #8d99ae"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+            />
+          </svg>
+        </div>
+        <div id="banner-film">
+          <img
+            src="https://m.media-amazon.com/images/M/MV5BNzQxNzQxNjk5NV5BMl5BanBnXkFtZTgwNTI4MTU0MzE@._V1_FMjpg_UX1000_.jpg"
+            style="width: 100%"
+            alt=""
+          />
+          <div id="info-film">
+            <h4 class="title-film text-light text-center m-0">Naruto (2022)</h4>
+            <div class="pagination p1">
+              <ul>
+                <a class="is-active" href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="align-self: center; justify-self: center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="currentColor"
+            class="bi bi-chevron-right"
+            viewBox="0 0 16 16"
+            style="color: #8d99ae"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+            />
+          </svg>
+        </div>
+      </div>
+      <!-- Popular film -->
+      <div>
+        <h3 class="m-0">Most Popular</h3>
+
+        <div class="row">
+          <div class="col-1 d-flex justify-content-center align-items-center">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-chevron-left"
+                viewBox="0 0 16 16"
+                style="color: #8d99ae"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="col-10">
+            <div class="pagination p1 d-flex justify-content-end">
+              <ul>
+                <a class="is-active" href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+              </ul>
+            </div>
+            <div class="grid-popular-film">
+              <div>
+                <img
+                  src="https://m.media-amazon.com/images/M/MV5BMDI3ZDY4MDgtN2U2OS00Y2YzLWJmZmYtZWMzOTM3YWFjYmUyXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg"
+                  alt=""
+                  class="img-popular-film img-fluid"
+                />
+              </div>
+              <div>
+                <img
+                  src="https://genk.mediacdn.vn/2019/4/11/anh-0-1554970993358362044281.jpg"
+                  alt=""
+                  class="img-popular-film img-fluid"
+                />
+              </div>
+              <div>
+                <img
+                  src="https://m.media-amazon.com/images/M/MV5BZWI1MTkxMmQtNjgyZC00YjhhLTlhZGQtYzcwODg5MDkzMjYzXkEyXkFqcGdeQXVyMTA3OTEyODI1._V1_.jpg"
+                  alt=""
+                  class="img-popular-film img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-1 d-flex justify-content-center align-items-center">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+                style="color: #8d99ae"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Top rating -->
+      <div class="mt-3">
+        <h3 class="m-0">Top Rating</h3>
+        <div class="row">
+          <div class="col-1 d-flex justify-content-center align-items-center">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-chevron-left"
+                viewBox="0 0 16 16"
+                style="color: #8d99ae"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="col-10">
+            <div class="pagination p1 d-flex justify-content-end">
+              <ul>
+                <a class="is-active" href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+                <a href="#"><li></li></a>
+              </ul>
+            </div>
+            <div class="grid-popular-film">
+              <div>
+                <img
+                  src="https://m.media-amazon.com/images/M/MV5BMDI3ZDY4MDgtN2U2OS00Y2YzLWJmZmYtZWMzOTM3YWFjYmUyXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg"
+                  alt=""
+                  class="img-popular-film img-fluid"
+                />
+              </div>
+              <div>
+                <img
+                  src="https://genk.mediacdn.vn/2019/4/11/anh-0-1554970993358362044281.jpg"
+                  alt=""
+                  class="img-popular-film img-fluid"
+                />
+              </div>
+              <div>
+                <img
+                  src="https://m.media-amazon.com/images/M/MV5BZWI1MTkxMmQtNjgyZC00YjhhLTlhZGQtYzcwODg5MDkzMjYzXkEyXkFqcGdeQXVyMTA3OTEyODI1._V1_.jpg"
+                  alt=""
+                  class="img-popular-film img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-1 d-flex justify-content-center align-items-center">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+                style="color: #8d99ae"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer -->
+
+      <div
+        class="alert bg-light text-dark fw-bold text-end mt-5 d-flex justify-content-between align-items-center"
+      >
+        <h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="currentColor"
+            class="bi bi-camera-reels-fill me-3"
+            viewBox="0 0 16 16"
+            style="color: #f08c00"
+          >
+            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+            <path
+              d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7z"
+            />
+          </svg>
+          Movies info
+        </h2>
+        <h5>Copyright © 2022 by &lt; Tuấn Khanh &gt;</h5>
+      </div>
+    </div>
+  </body>
 </html>
