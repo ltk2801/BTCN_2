@@ -1,6 +1,6 @@
 import voNew from "./newFilm.js";
 import voP from "./popularFilm.js";
-import voMost from "./mostFilm.js";
+import voT from "./topFilm.js";
 
 export default {
   data() {
@@ -10,14 +10,14 @@ export default {
   components: {
     voNew,
     voP,
-    voMost,
+    voT,
   },
 
   template: `
     <div>
         <voNew />
         <voP />
-        <voMost />
+        <voT />
         </div>
     `,
 };

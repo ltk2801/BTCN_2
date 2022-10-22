@@ -4,21 +4,33 @@
 }
 .grid-new-film {
   display: grid;
-  grid-template-columns: 20% auto 20%;
+  grid-template-columns: 30% auto 30%;
 }
 
 .bg {
   background-color: #d3d1d1;
 }
 #banner-film {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
   position: relative;
 }
 
 #info-film {
-  position: absolute;
+  /* position: absolute;
   bottom: 3%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
+  text-align: center;
+}
+.poster-film {
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  object-fit: fill;
+  max-height: 600px;
+  overflow: hidden;
 }
 
 .pagination {
@@ -46,7 +58,7 @@
 }
 .p1 a:hover,
 a:active {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   transition: all 0.5s ease;
 }
 
@@ -62,6 +74,10 @@ a:active {
 .img-popular-film {
   width: 100%;
   height: 300px;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .dark-mode {
@@ -86,4 +102,34 @@ svg.chevronL:active {
   color: white !important;
   transform: translateX(-4px);
   transition: all 0.3s ease;
+}
+
+.movie {
+  position: relative;
+}
+.movie-over {
+  background-color: #22b8cf;
+  color: white;
+  border-radius: 5px;
+  padding: 2px;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  display: none;
+}
+
+.movie:hover .movie-over {
+  transform: translateY(0%);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+.movie:hover {
+  transform: translateY(-10%);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }

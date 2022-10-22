@@ -8,6 +8,7 @@ export default {
     toggleDarkMode() {
       $(".bg-darkmode").toggleClass("dark-mode");
       $("div.container").toggleClass("dark-mode-container");
+      $("body").toggleClass("bg-secondary");
     },
   },
   template: `
