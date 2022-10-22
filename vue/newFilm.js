@@ -1,31 +1,21 @@
-// import Movie from "./movie.js";
-import datas from "./InTheaters.json" assert { type: "json" };
 import movie from "./movie.js";
+import store from "./store.js";
 
 export default {
   data() {
     return {
-      movies: [],
       // Đặt biến để thực hiện việc phân trang
       perPage: 1,
       currentPage: 1,
       start: 0,
       end: 1,
       totalPage: 5 / 1,
+      store,
     };
   },
   methods: {
-    async load() {
-      //   const res = await fetch(
-      //     "https://imdb-api.com/en/API/InTheaters/k_w6h25qw5"
-      //   );
-      //   const rs = await res.json();
-      //   const totalData = rs.items.slice(0, 5);
-      //   this.movies = totalData.map((obj) => new Movie(obj));
-      //   console.log(this.start, this.end);
-      //   this.end = this.perPage;
-      const totalData = datas.items.slice(0, 5);
-      this.movies = totalData.map((obj) => new movie(obj));
+    // lấy giá trị end
+    getEndVl() {
       this.end = this.perPage;
     },
     // Hàm lấy ra trang hiện tại
@@ -54,9 +44,12 @@ export default {
       this.currentPage = n;
       this.getCurrentPage(this.currentPage);
     },
+    select() {
+      console.log("hihi");
+    },
   },
   mounted() {
-    this.load();
+    this.getEndVl();
   },
 
   template: `
@@ -78,12 +71,13 @@ export default {
     </svg>
   </div>
     <div id="banner-film">
-    <template v-for="(m,index) in movies" :key="m.id">
+    <template v-for="(m,index) in store.newFilms" :key="m.id" >
         <span v-if="(index >= start) && (index < end)">
         <img
         :src="m.img"
         :alt="m.title"
         class="poster-film"
+        @click="$emit('select',m.id)"
       />
       <div class="d-flex flex-column align-items-center mt-3" id="info-film">
         <h2 class="title-film text-light text-center m-0">{{m.title}}</h2>

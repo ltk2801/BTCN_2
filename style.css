@@ -133,3 +133,12 @@ svg.chevronL:active {
   transition: all 0.3s ease-in-out;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
+
+#homebtn:hover {
+  color: #e76f51;
+  cursor: pointer;
+  font-weight: bold;
+
+  transform: translateX(2px);
+  transition: all 0.2s ease-in-out;
+}

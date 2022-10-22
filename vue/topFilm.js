@@ -1,30 +1,21 @@
-import datas from "./250movies.json" assert { type: "json" };
 import movie from "./movie.js";
+import store from "./store.js";
 
 export default {
   data() {
     return {
-      movies: [],
       // Đặt biến để thực hiện việc phân trang
       perPage: 3,
       currentPage: 1,
       start: 0,
       end: 1,
       totalPage: 15 / 3,
+      store,
     };
   },
   methods: {
-    async load() {
-      //   const res = await fetch(
-      //     "https://imdb-api.com/en/API/InTheaters/k_w6h25qw5"
-      //   );
-      //   const rs = await res.json();
-      //   const totalData = rs.items.slice(0, 15);
-      //   this.movies = totalData.map((obj) => new Movie(obj));
-      //   console.log(this.start, this.end);
-      //   this.end = this.perPage;
-      const totalData = datas.items.slice(0, 15);
-      this.movies = totalData.map((obj) => new movie(obj));
+    // lấy giá trị end
+    getEndVl() {
       this.end = this.perPage;
     },
     // Hàm lấy ra trang hiện tại
@@ -53,9 +44,10 @@ export default {
       this.currentPage = n;
       this.getCurrentPage(this.currentPage);
     },
+    select() {},
   },
   mounted() {
-    this.load();
+    this.getEndVl();
   },
   template: `
     <div class="mt-3">
@@ -90,13 +82,14 @@ export default {
               </ul>
             </div>
             <div class="grid-popular-film">
-            <template v-for="(m,index) in movies" :key="m.id">
+            <template v-for="(m,index) in store.ratingFilms" :key="m.id">
             <span v-if="(index >= start) && (index < end)">
             <div class='movie'>
               <img
                 :src="m.img"
                 :alt="m.title"
                 class="img-popular-film img-fluid"
+                @click="$emit('select',m.id)"
               />
               <div class="movie-over">
                 <h4>{{m.title}}</h4>
