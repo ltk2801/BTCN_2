@@ -28,9 +28,16 @@
   width: 100%;
   border-radius: 3px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-  object-fit: fill;
+  object-fit: cover;
   max-height: 600px;
-  overflow: hidden;
+}
+
+.poster-film:hover,
+.poster-film:active {
+  opacity: 0.8;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(-2%);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .pagination {
@@ -78,6 +85,12 @@ a:active {
   overflow: hidden;
   position: relative;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.img-popular-film:hover,
+.img-popular-film:active {
+  opacity: 0.8;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .dark-mode {
@@ -141,4 +154,10 @@ svg.chevronL:active {
 
   transform: translateX(2px);
   transition: all 0.2s ease-in-out;
+}
+
+.img-detail {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

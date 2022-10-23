@@ -9,6 +9,8 @@ import voF from "./footer.js";
 import store from "./store.js";
 import movie from "./movie.js";
 import voDp from "./detailMain.js";
+import voAp from "./actorMain.js";
+import actor from "./actor.js";
 
 export default {
   data() {
@@ -24,6 +26,7 @@ export default {
     voM,
     voF,
     voDp,
+    voAp,
   },
   methods: {
     async loadNew() {
@@ -47,9 +50,23 @@ export default {
       store.ratingFilms = totalData.map((obj) => new movie(obj));
       this.curMain = "voM";
     },
-    test(n) {
-      console.log(n);
+    async getIdMovie(id) {
+      const res = await fetch(
+        `https://imdb-api.com/en/API/Title/k_ed0315j1/${id}/FullActor`
+      );
+      const rs = await res.json();
+      store.curP = new movie(rs);
       this.curMain = "voDp";
+    },
+    async getIdActor(id) {
+      console.log(id);
+      const res = await fetch(
+        `https://imdb-api.com/en/API/Name/k_ed0315j1/${id}`
+      );
+      const rs = await res.json();
+      store.curA = new actor(rs);
+      console.log(store.curA);
+      this.curMain = "voAp";
     },
   },
   mounted() {
@@ -60,7 +77,9 @@ export default {
   template: `
         <voH />
         <voN @home="loadNew" />
-        <component :is="curMain"  @submitID = 'test' ></component>
+        <component :is="curMain"  @submitID = 'getIdMovie' @selectIdActor ="getIdActor" @selectIdMovie="getIdMovie"  ></component>
         <voF />
     `,
 };
+
+//

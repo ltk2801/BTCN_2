@@ -44,9 +44,7 @@ export default {
       this.currentPage = n;
       this.getCurrentPage(this.currentPage);
     },
-    select() {
-      console.log("hihi");
-    },
+    select() {},
   },
   mounted() {
     this.getEndVl();
@@ -74,6 +72,7 @@ export default {
     <template v-for="(m,index) in store.newFilms" :key="m.id" >
         <span v-if="(index >= start) && (index < end)">
         <img
+    
         :src="m.img"
         :alt="m.title"
         class="poster-film"
