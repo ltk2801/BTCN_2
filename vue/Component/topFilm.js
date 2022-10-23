@@ -1,5 +1,5 @@
-import movie from "./movie.js";
-import store from "./store.js";
+import movie from "../Module/movie.js";
+import store from "../Module/store.js";
 
 export default {
   data() {

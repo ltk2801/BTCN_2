@@ -1,5 +1,5 @@
-import actor from "./actor.js";
-import store from "./store.js";
+import actor from "../Module/actor.js";
+import store from "../Module/store.js";
 
 export default {
   data() {

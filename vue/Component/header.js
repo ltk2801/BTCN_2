@@ -25,7 +25,7 @@ export default {
         align-items: flex-end;
       "
     >
-      <h4>&lt; key API &gt;</h4>
+      <h4>&lt; k_ed0315j1 &gt;</h4>
       <h4 class="form-check form-switch">
         <input
           class="form-check-input"

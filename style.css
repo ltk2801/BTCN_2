@@ -76,7 +76,7 @@ a:active {
 .grid-popular-film {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 50px;
 }
 .img-popular-film {
   width: 100%;

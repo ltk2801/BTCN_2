@@ -1,10 +1,15 @@
 export default {
   data() {
-    return {};
+    return {
+      str: "",
+    };
   },
   methods: {
     homeHandle() {
       this.$emit("home");
+    },
+    searchHandleMovie() {
+      this.$emit("searchMovie", this.str);
     },
   },
   template: `
@@ -17,10 +22,13 @@ export default {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              v-model="str"
             />
             <button
               class="btn btn-outline-success"
               type="button"
+              @click="searchHandleMovie"
+        
             >
               Search
             </button>

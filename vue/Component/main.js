@@ -1,7 +1,7 @@
 import voNew from "./newFilm.js";
 import voP from "./popularFilm.js";
 import voT from "./topFilm.js";
-import store from "./store.js";
+import store from "../Module/store.js";
 
 export default {
   data() {
